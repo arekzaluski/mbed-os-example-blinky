@@ -6,7 +6,7 @@
 #include "mbed.h"
 
 
-#define SLEEP_TIME                  1000 // (msec)
+#define SLEEP_TIME                  5000 // (msec)
 #define PRINT_AFTER_N_LOOPS         20
 
 BufferedSerial pc(USBTX, USBRX);
