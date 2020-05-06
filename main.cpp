@@ -11,16 +11,18 @@ DigitalOut led1(LED1);
 #define SLEEP_TIME                  1000 // (msec)
 #define PRINT_AFTER_N_LOOPS         20
 
+BufferedSerial pc(USBTX, USBRX);
+
 // main() runs in its own thread in the OS
 int main()
 {
     SystemReport sys_state( SLEEP_TIME * PRINT_AFTER_N_LOOPS /* Loop delay time in ms */);
-
+    pc.write("Hello!", 0);
     int count = 0;
     while (true) {
         // Blink LED and wait 0.5 seconds
         led1 = !led1;
-        wait_ms(SLEEP_TIME);
+        wait_ns(SLEEP_TIME);
 
         if ((0 == count) || (PRINT_AFTER_N_LOOPS == count)) {
             // Following the main thread wait, report on the current system status
